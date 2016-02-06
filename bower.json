@@ -1,0 +1,40 @@
+{
+  "name": "suitjs/wallet",
+  "homepage": "https://github.com/suitjs/wallet",
+  "authors": [
+    "Eduardo Dias da Costa <eduardo@thelaborat.org>",
+	"Gustavo Allebrandt <gustavoallebrandt@gmail.com>",
+  ],
+  "description": "Keep your valuables well stored.",
+  "main": ["deploy/js/wallet.js"],
+  "moduleType": [],
+  "keywords": [
+	"front-end",
+    "haxe",
+	"typescript",
+	"javascript",
+	"framework",
+    "suitjs",
+	"indexeddb",
+	"storage",
+	"localforage",
+	"store",	
+  ],
+  
+  "ignore": [	
+	"**/.*",
+	"old/",
+	"node_modules/",
+	"bower_components/",
+	"source/",	
+	"*.hxproj",
+	"test.html",	
+	"README.md",
+	"bower.json",
+	"haxelib.json",
+	"LICENSE"	
+  ],
+
+  "license": "MIT",
+  "private": true
+}
