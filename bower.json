@@ -3,7 +3,7 @@
   "homepage": "https://github.com/suitjs/wallet",
   "authors": [
     "Eduardo Dias da Costa <eduardo@thelaborat.org>",
-	"Gustavo Allebrandt <gustavoallebrandt@gmail.com>",
+	"Gustavo Allebrandt <gustavoallebrandt@gmail.com>"
   ],
   "description": "Keep your valuables well stored.",
   "main": ["deploy/js/wallet.js"],
@@ -18,7 +18,7 @@
 	"indexeddb",
 	"storage",
 	"localforage",
-	"store",	
+	"store"	
   ],
   
   "ignore": [	
