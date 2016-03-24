@@ -123,6 +123,19 @@ var Wallet;
 		});				
 		return p_value;
 	};
+    
+    /**
+     * Checks if a given 'key' exists in the current database and context.
+     * @param  {String} p_key - Key that index the information.
+     * @param  {Function(Boolean)} p_callback - Callback called sending 'true'|'false' telling if the 'key' exists.
+     */
+    Wallet.exists =    
+    function exists(p_key,p_callback) {        
+        Wallet.get(p_key,function(d,e){
+           var res = (d!=null)&&(e==null);
+           m_invokeCallback(p_callback,typeof(p_callback)=="string","exists",res,null);
+        });      
+    };
 
 	/**
      * Removes data from LocalForage.

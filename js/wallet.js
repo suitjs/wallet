@@ -1124,6 +1124,12 @@ var Wallet;
         });
         return p_value;
     };
+    Wallet.exists = function exists(p_key, p_callback) {
+        Wallet.get(p_key, function(d, e) {
+            var res = d != null && e == null;
+            m_invokeCallback(p_callback, typeof p_callback == "string", "exists", res, null);
+        });
+    };
     Wallet.remove = function remove(p_key, p_callback) {
         var p = Wallet.context == "" ? "" : Wallet.context + ".";
         lf.removeItem(p + p_key, function localforageRemove(p_error, p_res) {
