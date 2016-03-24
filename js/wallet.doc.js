@@ -11,7 +11,7 @@
 * @class
 * @type Wallet
 */
-var Wallet;
+var Wallet = {};
 (function(window,document,body) {
 
 	"use strict";

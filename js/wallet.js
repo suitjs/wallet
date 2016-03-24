@@ -1080,7 +1080,7 @@
     }) : l === j.EXPORT ? module.exports = p : this.localforage = p;
 }.call(window);
 
-var Wallet;
+var Wallet = {};
 
 (function(window, document, body) {
     "use strict";
