@@ -6,7 +6,7 @@
 	"Gustavo Allebrandt <gustavoallebrandt@gmail.com>"
   ],
   "description": "Keep your valuables well stored.",
-  "main": ["deploy/js/wallet.js"],
+  "main": ["js/wallet.js"],
   "moduleType": [],
   "keywords": [
 	"front-end",
@@ -35,6 +35,6 @@
 	"LICENSE"	
   ],
 
-  "license": "MIT",
-  "private": true
+  "license": "MIT"
+  
 }
