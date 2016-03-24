@@ -26,9 +26,10 @@ var Wallet;
 	
     /**
      * Chosen name for the database.
+     * Cannot be changed. Use `Wallet.init` to initialize the tool.
      * @type {String}
      */
-	var m_database = "wallet";
+	Wallet.database = "wallet";
 
 	//Flag that indicates if the class was initialized.
 	var m_hasInit  = false;
@@ -52,7 +53,9 @@ var Wallet;
 
 	/**
      * Initializes the storage with custom information.
-	 * @param  {?String} p_name - Database name. Defaults to 'wallet'.	 
+	 * @param  {?String} p_name - Database name. Defaults to 'wallet'.
+     * @example
+     * Wallet.init("my-unique-app-database");	 
 	 */    
 	Wallet.init =
 	function init(p_name) {
@@ -91,6 +94,15 @@ var Wallet;
      * Retrieves a data from LocalForage.
 	 * @param  {String} p_key - Key that index the information.
 	 * @param  {String|WalletCallback} p_callback - Function that will handle the end of operation or String in the format `path.to.event` compatible with `Suit` controllers.
+     * @example
+     * //Gets a value using 'key'
+     * Wallet.get('key',function(p_data,p_error){
+     *  if(p_error!=null) { return; }
+     *  //use p_data
+     * });
+     * 
+     * //Using 'Suit' notifications if available.
+     * Wallet.get('key','get-event'); //will generate either 'get-event@get' or 'get-event@error'
 	 */
 	Wallet.get =
 	function(p_key,p_callback) {			
@@ -110,6 +122,15 @@ var Wallet;
 	 * @param  {String} p_key - Key that index the information to be set.
      * @param  {Object} p_value - Object to be stored.
 	 * @param  {String|WalletCallback} p_callback - Function that will handle the end of operation or String in the format `path.to.event` compatible with `Suit` controllers.
+     * @example
+     * //Sets a value using 'key'
+     * Wallet.set('key',{some: "data"},function(p_data,p_error){
+     *  if(p_error!=null) { return; }
+     *  //use p_data
+     * });
+     * 
+     * //Using 'Suit' notifications if available.
+     * Wallet.set('key',{some: "data"},'set-event'); //will generate either 'set-event@set' or 'set-event@error'
 	 */
 	Wallet.set = 
 	function set(p_key,p_value,p_callback) {	
@@ -128,6 +149,14 @@ var Wallet;
      * Checks if a given 'key' exists in the current database and context.
      * @param  {String} p_key - Key that index the information.
      * @param  {Function(Boolean)} p_callback - Callback called sending 'true'|'false' telling if the 'key' exists.
+     * @example
+     * 
+     * Wallet.exists('key',function(p_flag){
+     *  if(p_flag) { console.log('exists'); }
+     * });
+     * 
+     * //Using 'Suit' notifications if available.
+     * Wallet.exists('key','have-it'); //will generate 'have-it@exists'
      */
     Wallet.exists =    
     function exists(p_key,p_callback) {        
@@ -142,6 +171,14 @@ var Wallet;
      * Stores a data into LocalForage.
 	 * @param  {String} p_key - Key that index the information to be removed.     
 	 * @param  {String|WalletCallback} p_callback - Function that will handle the end of operation or String in the format `path.to.event` compatible with `Suit` controllers.
+     * @example
+     * 
+     * Wallet.remove('key',function(p_data,p_error){
+     *  if(p_error!=null) { return; } //failed
+     * });
+     * 
+     * //Using 'Suit' notifications if available.
+     * Wallet.remove('key','is-gone'); //will generate 'is-gone@remove' or 'is-gone@error'
 	 */
 	Wallet.remove =
 	function remove(p_key,p_callback) {
@@ -160,6 +197,14 @@ var Wallet;
      * Returns the keyname based on the numeric id.
 	 * @param  {Number} p_id - Numeric id whose string key will be returned.     
 	 * @param  {String|WalletCallback} p_callback - Function that will handle the end of operation or String in the format `path.to.event` compatible with `Suit` controllers.
+     * @example
+     * 
+     * Wallet.key(5,function(p_key_name,p_error){
+     *  if(p_error!=null) { return; } //failed
+     * });
+     * 
+     * //Using 'Suit' notifications if available.
+     * Wallet.key(5,'is-finish'); //will generate 'is-finish@key' or 'is-finish@error'
 	 */
 	Wallet.key =
 	function key(p_id,p_callback) {
@@ -176,6 +221,14 @@ var Wallet;
 	/**
      * Recovers the keys related to the context. If the context if empty, returns all keys.	      
 	 * @param  {String|WalletCallback} p_callback - Function that will handle the end of operation or String in the format `path.to.event` compatible with `Suit` controllers.
+     * @example
+     * 
+     * Wallet.keys(function(p_list,p_error){
+     *  if(p_error!=null) { return; } //failed
+     * });
+     * 
+     * //Using 'Suit' notifications if available.
+     * Wallet.keys('check-keys'); //will generate 'check-keys@keys' or 'check-keys@error'
 	 */
 	Wallet.keys = 
 	function keys(p_callback) {
@@ -203,6 +256,14 @@ var Wallet;
 	/**
      * Removes all keys of this context. If the context is empty all data will be excluded.	      
 	 * @param  {String|WalletCallback} p_callback - Function that will handle the end of operation or String in the format `path.to.event` compatible with `Suit` controllers.
+     * @example
+     * 
+     * Wallet.clear(function(p_removed_count,p_error){
+     *  if(p_error!=null) { return; } //failed
+     * });
+     * 
+     * //Using 'Suit' notifications if available.
+     * Wallet.clear('clear-complete'); //will generate 'clear-complete@remove' or 'clear-complete@error'
 	 */    
 	Wallet.clear = 
 	function clear(p_callback) {
@@ -228,6 +289,14 @@ var Wallet;
     /**
      * Returns the length of this storage based on the current context.	      
 	 * @param  {String|WalletCallback} p_callback - Function that will handle the end of operation or String in the format `path.to.event` compatible with `Suit` controllers.
+     * @example
+     * 
+     * Wallet.length(function(p_count,p_error){
+     *  if(p_error!=null) { return; } //failed
+     * });
+     * 
+     * //Using 'Suit' notifications if available.
+     * Wallet.length('count-complete'); //will generate 'count-complete@length' or 'count-complete@error'
 	 */        
 	Wallet.length =  
 	function length(p_callback) {
@@ -242,6 +311,11 @@ var Wallet;
     /**
      * Iterates all key-value pairs from this storaged context.	      
 	 * @param  {WalletIterationCallback} p_callback - Function that will handle each iteration step.
+     * @example
+     * 
+     * Wallet.iterate(function(p_key,p_value,p_index){
+     *  
+     * });
 	 */    
 	Wallet.iterate = 
 	function iterate(p_callback) {
@@ -263,6 +337,14 @@ var Wallet;
     /**
      * Removes all data from `ALL` databases. Use with care.	      
 	 * @param  {String|WalletCallback} p_callback - Function that will handle the end of operation or String in the format `path.to.event` compatible with `Suit` controllers.
+     * @example
+     * 
+     * Wallet.destroy(function(p_error){
+     *  if(p_error!=null) { return; } //failed  
+     * });
+     * 
+     * //Using 'Suit' notifications if available.
+     * Wallet.destroy('armageddon-complete'); //will generate 'armageddon-complete@destroy' or 'armageddon-complete@error'
 	 */        
 	Wallet.destroy = function destroy(p_callback) { lf.clear(function localforageClear(p_error) { m_invokeCallback(p_callback,typeof(p_callback)=="string",(p_error!=null) ? "error" : "destroy",p_error); }); };
 

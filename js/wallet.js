@@ -1086,7 +1086,7 @@ var Wallet;
     "use strict";
     console.log("Wallet> Init v1.0.0");
     Wallet.context = "g";
-    var m_database = "wallet";
+    Wallet.database = "wallet";
     var m_hasInit = false;
     var lf = localforage;
     var m_invokeCallback = function(p_callback, p_is_str, p_type, p_result, p_error) {
