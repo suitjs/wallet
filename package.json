@@ -21,7 +21,7 @@
     "build-js":     "uglifyjs js/wallet.doc.js -b -o js/wallet.js && uglifyjs js/wallet.doc.js -o js/wallet.min.js",
     "build-haxe":   "haxe build.hxml",
     "serve":        "http-server ./ -p 8081",
-    "build":        "npm run build-docs && npm run build-js"   
+    "build":        "npm run build-js"   
   },
   "contributors": [
     "Gustavo Allebrandt <gustavoallebrandt@gmail.com"
